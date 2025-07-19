@@ -8,7 +8,11 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
-    "types": ["node"]
+    "types": ["node"],
+    "skipLibCheck": true
   },
-  "include": ["nodes/**/*.ts"]
+  "include": [
+    "nodes/**/*.ts",
+    "types.d.ts"
+  ]
 }
