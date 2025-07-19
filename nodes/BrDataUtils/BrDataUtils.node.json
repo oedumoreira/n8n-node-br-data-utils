@@ -1,0 +1,19 @@
+{
+	"node": "dist/nodes/BrDataUtils/BrDataUtils.node.js",
+	"description": {
+		"displayName": "BR Data Utils",
+		"name": "brDataUtils",
+		"icon": "file:brDataUtils.svg",
+		"group": ["transform"],
+		"version": 1,
+		"subtitle": "={{$parameter[\"operation\"]}}",
+		"description": "Valida e formata dados brasileiros (CPF, CNPJ, telefone, celular, CEP)",
+		"defaults": {
+			"name": "BR Data Utils"
+		},
+		"inputs": ["main"],
+		"outputs": ["main"],
+		"credentials": [],
+		"properties": []
+	}
+}
