@@ -1,0 +1,55 @@
+{
+  "name": "n8n-node-br-data-utils",
+  "version": "1.0.0",
+  "description": "Valida e higieniza dados brasileiros (CPF, CNPJ, telefone, CEP e mais) em workflows do n8n.",
+  "main": "dist/nodes/BrDataUtils/BrDataUtils.node.js",
+  "types": "dist/nodes/BrDataUtils/BrDataUtils.node.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "tsc && node dist/tests/validators.test.js",
+    "prepublishOnly": "npm run build",
+    "dev": "npm run build && npm run test"
+  },
+  "keywords": [
+    "n8n",
+    "n8n-community-node",
+    "brasil",
+    "validação",
+    "cpf",
+    "cnpj",
+    "cep",
+    "telefone",
+    "celular",
+    "formatacao"
+  ],
+  "author": "Eduardo Moreira <edumoreirajj@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "n8n-workflow": "^1.82.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/luxon": "^3.0.0",
+    "@types/express": "^4.17.0",
+    "@sentry/node": "^7.0.0",
+    "@langchain/core": "^0.1.0",
+    "luxon": "^3.0.0",
+    "express": "^4.18.0",
+    "typescript": "^5.0.0",
+    "nock": "^13.0.0",
+    "ssh2": "^1.0.0"
+  },
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [],
+    "nodes": [
+      "dist/nodes/BrDataUtils/BrDataUtils.node.js"
+    ]
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ]
+}
