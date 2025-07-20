@@ -1,6 +1,6 @@
-# n8n-node-br-data-utils
+# n8n-nodes-br-data-utils
 
-[![NPM Version](https://img.shields.io/npm/v/n8n-node-br-data-utils)](https://www.npmjs.com/package/n8n-node-br-data-utils)
+[![NPM Version](https://img.shields.io/npm/v/n8n-nodes-br-data-utils)](https://www.npmjs.com/package/n8n-nodes-br-data-utils)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Um nó do n8n para validar e formatar dados brasileiros como CPF, CNPJ, telefone, celular e CEP.
@@ -8,7 +8,7 @@ Um nó do n8n para validar e formatar dados brasileiros como CPF, CNPJ, telefone
 ## 🚀 Instalação
 
 ```bash
-npm install n8n-node-br-data-utils
+npm install n8n-nodes-br-data-utils
 ```
 
 ## 📋 Funcionalidades
@@ -107,7 +107,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para de
 
 ## 🐛 Reportar Bugs
 
-Se você encontrar algum bug, por favor [abra uma issue](https://github.com/oedumoreira/n8n-node-br-data-utils/issues) com detalhes sobre o problema.
+Se você encontrar algum bug, por favor [abra uma issue](https://github.com/oedumoreira/n8n-nodes-br-data-utils/issues) com detalhes sobre o problema.
 
 ## 🙏 Agradecimentos
 
