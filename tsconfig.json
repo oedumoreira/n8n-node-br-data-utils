@@ -13,6 +13,7 @@
   },
   "include": [
     "nodes/**/*.ts",
-    "types.d.ts"
+    "types.d.ts", 
+    "tests/setup.ts"  
   ]
 }
