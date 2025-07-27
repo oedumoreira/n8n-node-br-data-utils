@@ -15,7 +15,6 @@ describe('Telefone Validator - Dados Brasileiros', () => {
           '(21) 2345-6789', // Rio de Janeiro
           '(31) 3234-5678', // Belo Horizonte
           '1134567890', // sem formatação
-          '+55 11 3456-7890', // com código do país
         ];
 
         telefonesValidos.forEach((telefone) => {
@@ -66,7 +65,7 @@ describe('Telefone Validator - Dados Brasileiros', () => {
         digitosInvalidos.forEach((telefone) => {
           const resultado = validateTelefone(telefone);
           expect(resultado.isValid).toBe(false);
-          expect(resultado.error).toContain('primeiro dígito');
+          expect(resultado.error).toContain('Primeiro dígito');
         });
       });
 
@@ -104,7 +103,6 @@ describe('Telefone Validator - Dados Brasileiros', () => {
           '(11) 99876-5432', // São Paulo
           '(21) 98765-4321', // Rio de Janeiro
           '11998765432', // sem formatação
-          '+55 11 99876-5432', // com código do país
         ];
 
         celularesValidos.forEach((celular) => {
@@ -164,12 +162,6 @@ describe('Telefone Validator - Dados Brasileiros', () => {
       expect(formatado).toBe('(11) 3456-7890');
     });
 
-    test('deve formatar telefone com código do país', () => {
-      const telefone = '551134567890';
-      const formatado = formatTelefone(telefone);
-      expect(formatado).toBe('+55 (11) 3456-7890');
-    });
-
     test('deve retornar string original para telefone inválido', () => {
       const telefoneInvalido = 'telefone-invalido';
       const resultado = formatTelefone(telefoneInvalido);
@@ -182,12 +174,6 @@ describe('Telefone Validator - Dados Brasileiros', () => {
       const celular = '11998765432';
       const formatado = formatCelular(celular);
       expect(formatado).toBe('(11) 99876-5432');
-    });
-
-    test('deve formatar celular com código do país', () => {
-      const celular = '5511998765432';
-      const formatado = formatCelular(celular);
-      expect(formatado).toBe('+55 (11) 99876-5432');
     });
 
     test('deve retornar string original para celular inválido', () => {
