@@ -7,6 +7,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
+    "format": "prettier --write .",
     "prebuild": "npm test",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -46,6 +47,7 @@
     "jest": "^30.0.5",
     "luxon": "^3.0.0",
     "nock": "^13.0.0",
+    "prettier": "^3.6.2",
     "ssh2": "^1.16.0",
     "ts-jest": "^29.4.0",
     "typescript": "^5.0.0"

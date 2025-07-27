@@ -9,10 +9,10 @@ describe('CNPJ Validator - Dados Brasileiros', () => {
         const cnpjsValidos = [
           '11.222.333/0001-81',
           '12.345.678/0001-95',
-          '11444777000161' // sem formatação
+          '11444777000161', // sem formatação
         ];
 
-        cnpjsValidos.forEach(cnpj => {
+        cnpjsValidos.forEach((cnpj) => {
           const resultado = validateCnpj(cnpj);
           expect(resultado.isValid).toBe(true);
           expect(resultado.error).toBeUndefined();
@@ -43,13 +43,9 @@ describe('CNPJ Validator - Dados Brasileiros', () => {
       });
 
       test('deve rejeitar CNPJ com todos os dígitos iguais', () => {
-        const cnpjsInvalidos = [
-          '11.111.111/1111-11',
-          '22.222.222/2222-22',
-          '00000000000000'
-        ];
+        const cnpjsInvalidos = ['11.111.111/1111-11', '22.222.222/2222-22', '00000000000000'];
 
-        cnpjsInvalidos.forEach(cnpj => {
+        cnpjsInvalidos.forEach((cnpj) => {
           const resultado = validateCnpj(cnpj);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CNPJ não pode ter todos os dígitos iguais');
@@ -61,10 +57,10 @@ describe('CNPJ Validator - Dados Brasileiros', () => {
           '123456789', // muito curto
           '123456789012345', // muito longo
           '11.222.333/001-81', // 13 dígitos
-          '111.222.333/0001-81' // 15 dígitos
+          '111.222.333/0001-81', // 15 dígitos
         ];
 
-        tamanhoErrado.forEach(cnpj => {
+        tamanhoErrado.forEach((cnpj) => {
           const resultado = validateCnpj(cnpj);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CNPJ deve ter 14 dígitos');
@@ -76,10 +72,10 @@ describe('CNPJ Validator - Dados Brasileiros', () => {
           '11.222.333/000a-81',
           '11.222.333/0001-8b',
           'abcd.efg.hij/klmn-op',
-          '11@222#333$0001%81'
+          '11@222#333$0001%81',
         ];
 
-        caracteresInvalidos.forEach(cnpj => {
+        caracteresInvalidos.forEach((cnpj) => {
           const resultado = validateCnpj(cnpj);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CNPJ contém caracteres inválidos');
@@ -89,7 +85,7 @@ describe('CNPJ Validator - Dados Brasileiros', () => {
       test('deve rejeitar valores vazios ou inválidos', () => {
         const valoresInvalidos = ['', '   ', null as any, undefined as any];
 
-        valoresInvalidos.forEach(valor => {
+        valoresInvalidos.forEach((valor) => {
           const resultado = validateCnpj(valor);
           expect(resultado.isValid).toBe(false);
         });
@@ -102,10 +98,10 @@ describe('CNPJ Validator - Dados Brasileiros', () => {
           '11.222.333/0001-81',
           '11222333/0001-81',
           '11.222333/0001-81',
-          '11.222.333000181'
+          '11.222.333000181',
         ];
 
-        formatacoesMistas.forEach(cnpj => {
+        formatacoesMistas.forEach((cnpj) => {
           const resultado = validateCnpj(cnpj);
           // Apenas testamos se não quebra, alguns podem ser inválidos por formatação
           expect(typeof resultado.isValid).toBe('boolean');

@@ -9,12 +9,12 @@ describe('CEP Validator - Dados Brasileiros', () => {
           '01310-100', // São Paulo - Av. Paulista
           '20040-020', // Rio de Janeiro - Centro
           '30112-000', // Belo Horizonte - Centro
-          '70040110',  // Brasília - sem formatação
+          '70040110', // Brasília - sem formatação
           '90010-150', // Porto Alegre
-          '40070-110'  // Salvador
+          '40070-110', // Salvador
         ];
 
-        cepsValidos.forEach(cep => {
+        cepsValidos.forEach((cep) => {
           const resultado = validateCep(cep);
           expect(resultado.isValid).toBe(true);
           expect(resultado.error).toBeUndefined();
@@ -50,10 +50,10 @@ describe('CEP Validator - Dados Brasileiros', () => {
           '123456', // muito curto
           '123456789', // muito longo
           '1234-567', // 7 dígitos
-          '123456-789' // 9 dígitos
+          '123456-789', // 9 dígitos
         ];
 
-        tamanhoErrado.forEach(cep => {
+        tamanhoErrado.forEach((cep) => {
           const resultado = validateCep(cep);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CEP deve ter 8 dígitos');
@@ -66,10 +66,10 @@ describe('CEP Validator - Dados Brasileiros', () => {
           '01310-10b',
           'abcde-fgh',
           '01310@100',
-          '01310#100'
+          '01310#100',
         ];
 
-        caracteresInvalidos.forEach(cep => {
+        caracteresInvalidos.forEach((cep) => {
           const resultado = validateCep(cep);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CEP contém caracteres inválidos');
@@ -79,7 +79,7 @@ describe('CEP Validator - Dados Brasileiros', () => {
       test('deve rejeitar valores vazios ou inválidos', () => {
         const valoresInvalidos = ['', '   ', null as any, undefined as any];
 
-        valoresInvalidos.forEach(valor => {
+        valoresInvalidos.forEach((valor) => {
           const resultado = validateCep(valor);
           expect(resultado.isValid).toBe(false);
         });
@@ -94,7 +94,7 @@ describe('CEP Validator - Dados Brasileiros', () => {
           '013101-00', // formatação incorreta mas testamos graciosamente
         ];
 
-        formatacoes.forEach(cep => {
+        formatacoes.forEach((cep) => {
           const resultado = validateCep(cep);
           expect(typeof resultado.isValid).toBe('boolean');
         });
