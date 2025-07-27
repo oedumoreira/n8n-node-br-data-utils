@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-br-data-utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Valida e higieniza dados brasileiros (CPF, CNPJ, telefone, CEP e mais) em workflows do n8n.",
   "main": "dist/nodes/BrDataUtils/BrDataUtils.node.js",
   "types": "dist/nodes/BrDataUtils/BrDataUtils.node.d.ts",
