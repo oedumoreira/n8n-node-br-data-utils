@@ -71,11 +71,11 @@ npm run test:watch   # Testes em modo watch
 npm run test:coverage # Testes com cobertura
 
 # Testes específicos
-npm run test:cpf     # Apenas testes de CPF
-npm run test:cnpj    # Apenas testes de CNPJ
-npm run test:cep     # Apenas testes de CEP
-npm run test:telefone # Apenas testes de telefone
-npm run test:validators # Todos os validadores
+npm test cpf     # Apenas testes de CPF
+npm test cnpj    # Apenas testes de CNPJ
+npm test cep     # Apenas testes de CEP
+npm test telefone # Apenas testes de telefone
+npm test validators # Todos os validadores
 ```
 
 ### Estrutura do projeto
