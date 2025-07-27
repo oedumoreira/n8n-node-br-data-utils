@@ -1,0 +1,62 @@
+# Arquivos de desenvolvimento
+tests/
+src/
+.github/
+.vscode/
+.idea/
+
+# Arquivos de configuração de desenvolvimento
+jest.config.js
+tsconfig.json
+.prettierrc
+.prettierignore
+.editorconfig
+.gitattributes
+.gitignore
+copilot-instructions.md
+
+# Dependências e builds temporários
+node_modules/
+coverage/
+
+# Arquivos de log e cache
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+
+# Arquivos temporários
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+
+# Arquivos específicos do editor
+*.swp
+*.swo
+*~
+
+# Arquivos de backup
+*.bak
+*.backup
+
+# Lock files (opcional - alguns preferem incluir)
+package-lock.json
+yarn.lock
+
+# Documentação de desenvolvimento (manter README.md)
+docs/
+.github/
+
+# Scripts de desenvolvimento
+scripts/
+tools/
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.development
+.env.test
+.env.production

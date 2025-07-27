@@ -76,7 +76,6 @@ npm test cpf     # Apenas testes de CPF
 npm test cnpj    # Apenas testes de CNPJ
 npm test cep     # Apenas testes de CEP
 npm test telefone # Apenas testes de telefone
-npm test validators # Todos os validadores
 ```
 
 ### Estrutura do projeto
@@ -117,6 +116,7 @@ npm run format  # Formata todo o código automaticamente
 ```
 
 **Configuração (`.prettierrc`)**:
+
 - **Fim de linha**: LF (Unix)
 - **Ponto e vírgula**: Sempre presente
 - **Aspas simples**: Preferidas
@@ -126,6 +126,7 @@ npm run format  # Formata todo o código automaticamente
 #### 📝 EditorConfig
 
 O projeto usa `.editorconfig` para consistência entre editores:
+
 - Charset: UTF-8
 - Fim de linha: LF
 - Indentação: 2 espaços
@@ -134,6 +135,7 @@ O projeto usa `.editorconfig` para consistência entre editores:
 #### 🔀 Git normalization
 
 Configurado via `.gitattributes`:
+
 - Todos os arquivos de texto usam LF
 - Arquivos binários preservados sem alteração
 
