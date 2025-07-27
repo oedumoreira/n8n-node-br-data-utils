@@ -63,6 +63,7 @@ npm run build
 # Desenvolvimento
 npm run build        # Compila TypeScript
 npm run watch        # Compila em modo watch
+npm run format       # Formata código com Prettier
 npm run dev          # Build + testes
 
 # Testes
@@ -98,9 +99,43 @@ n8n-nodes-br-data-utils/
 │   │   ├── cep.test.ts
 │   │   └── telefone.test.ts
 │   └── setup.ts           # Configuração global dos testes
+├── .prettierrc             # Configuração do Prettier
+├── .editorconfig          # Configuração do Editor
+├── .gitattributes         # Normalização Git
 ├── jest.config.js         # Configuração do Jest
 └── tsconfig.json          # Configuração do TypeScript
 ```
+
+### Padrões de código e formatação
+
+Este projeto segue rigorosos padrões de código:
+
+#### 🎨 Formatação automática com Prettier
+
+```bash
+npm run format  # Formata todo o código automaticamente
+```
+
+**Configuração (`.prettierrc`)**:
+- **Fim de linha**: LF (Unix)
+- **Ponto e vírgula**: Sempre presente
+- **Aspas simples**: Preferidas
+- **Indentação**: 2 espaços
+- **Largura máxima**: 100 caracteres
+
+#### 📝 EditorConfig
+
+O projeto usa `.editorconfig` para consistência entre editores:
+- Charset: UTF-8
+- Fim de linha: LF
+- Indentação: 2 espaços
+- Remove espaços em branco no final das linhas
+
+#### 🔀 Git normalization
+
+Configurado via `.gitattributes`:
+- Todos os arquivos de texto usam LF
+- Arquivos binários preservados sem alteração
 
 ### Padrões de teste
 
@@ -123,19 +158,39 @@ Cada validador possui testes abrangentes cobrindo:
 
 1. Faça um fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Execute os testes (`npm test`)
-4. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-5. Push para a branch (`git push origin feature/nova-feature`)
-6. Abra um Pull Request
+3. **Execute formatação**: `npm run format`
+4. **Execute os testes**: `npm test`
+5. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
+6. Push para a branch (`git push origin feature/nova-feature`)
+7. Abra um Pull Request
 
 ### Validação contínua
 
 O projeto utiliza:
 
 - **Pre-commit hooks** executam testes antes do commit
+- **Prettier** para formatação automática consistente
+- **EditorConfig** para padronização entre diferentes editores
 - **GitHub Actions** para CI/CD automatizado
 - **Cobertura de testes** mínima de 80%
-- **Lint** e **formatação** automática
+- **Normalização Git** com LF em todos os arquivos texto
+
+#### ⚡ Workflow de desenvolvimento recomendado
+
+```bash
+# 1. Faça suas alterações
+# 2. Formate o código
+npm run format
+
+# 3. Execute os testes
+npm test
+
+# 4. Build do projeto
+npm run build
+
+# 5. Ou use o comando combinado
+npm run dev  # Equivale a: build + test
+```
 
 ## 📄 Licença
 

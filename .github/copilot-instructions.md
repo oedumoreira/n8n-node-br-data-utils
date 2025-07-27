@@ -33,6 +33,43 @@ nodes/BrDataUtils/
 - **Retorno padronizado** com `ValidationResult`
 - **Tratamento de erros** gracioso
 
+## 🎨 Formatação e Padronização de Código
+
+### Prettier - Formatação Automática
+
+**OBRIGATÓRIO**: Use sempre `npm run format` antes de commits!
+
+```bash
+npm run format  # Formata automaticamente todo o código
+```
+
+#### Configuração do Prettier (`.prettierrc`):
+```json
+{
+  "endOfLine": "lf",        # Sempre LF (Unix) - nunca CRLF
+  "semi": true,             # Ponto e vírgula obrigatório
+  "singleQuote": true,      # Aspas simples preferidas
+  "tabWidth": 2,            # Indentação: 2 espaços
+  "printWidth": 100         # Máximo 100 caracteres por linha
+}
+```
+
+### EditorConfig - Padronização entre Editores
+
+Configuração aplicada automaticamente:
+- **Charset**: UTF-8
+- **Fim de linha**: LF (Unix)
+- **Indentação**: 2 espaços (nunca tabs)
+- **Espaços em branco**: Removidos no final das linhas
+- **Linha final**: Sempre presente
+
+### Git Attributes - Normalização
+
+Configurado via `.gitattributes`:
+- Todos os arquivos texto → LF
+- Arquivos binários → Preservados
+- Conversão automática no checkout/commit
+
 ## 🧪 Sistema de Testes
 
 ### Framework: Jest + TypeScript
@@ -61,9 +98,28 @@ tests/
 ```bash
 npm test                 # Todos os testes
 npm test cnpj            # Exemplo de teste específicos (CNPJ) - aplicável para outros validadores...
+npm run test:watch       # Testes em modo watch (desenvolvimento)
+npm run test:coverage    # Testes com relatório de cobertura
 ```
 
 ## 🎯 Guidelines para Development
+
+### Workflow de Desenvolvimento (OBRIGATÓRIO):
+```bash
+# 1. Sempre antes de começar
+npm run format
+
+# 2. Durante o desenvolvimento
+npm run test:watch  # Testes contínuos
+
+# 3. Antes de commit
+npm run format      # Formatar código
+npm test           # Validar testes
+npm run build      # Compilar TypeScript
+
+# 4. Comando combinado
+npm run dev        # build + test automaticamente
+```
 
 ### Ao criar/modificar validadores:
 1. **Sempre escreva testes primeiro** (TDD)
@@ -71,6 +127,7 @@ npm test cnpj            # Exemplo de teste específicos (CNPJ) - aplicável par
 3. **Implemente sanitização** antes da validação
 4. **Retorne sempre `ValidationResult`**
 5. **Trate erros graciosamente**
+6. **Formate com Prettier** antes de commit
 
 ### Estrutura de função validadora:
 ```typescript
@@ -113,10 +170,66 @@ export function validateX(value: string, options: ValidatorOptions = {}): Valida
    - Tamanhos incorretos
    - Valores null/undefined
 
+### Regras de Formatação de Código:
+
+#### ✅ FAZER:
+```typescript
+// Aspas simples
+const message = 'Validação realizada';
+
+// Ponto e vírgula sempre
+const result = validateCpf(cpf);
+
+// Indentação 2 espaços
+if (isValid) {
+  return {
+    isValid: true,
+    masked: formatted
+  };
+}
+
+// Máximo 100 caracteres por linha
+const longMessage = 
+  'Esta é uma mensagem muito longa que precisa ser quebrada em múltiplas linhas';
+```
+
+#### ❌ NÃO FAZER:
+```typescript
+// Aspas duplas (Prettier vai corrigir)
+const message = "Validação realizada"
+
+// Sem ponto e vírgula (Prettier vai corrigir)
+const result = validateCpf(cpf)
+
+// Indentação inconsistente (Prettier vai corrigir)
+if (isValid) {
+    return {
+        isValid: true,
+        masked: formatted
+    }
+}
+```
+
 ### Padrão de commit:
-- Execute `npm test` antes de commit
-- Use conventional commits
-- Mantenha cobertura > 80%
+```bash
+# Antes de QUALQUER commit
+npm run format      # OBRIGATÓRIO
+npm test           # OBRIGATÓRIO
+npm run build      # OBRIGATÓRIO
+
+# Depois fazer o commit
+git add .
+git commit -m "feat: adiciona validação de RG"
+```
+
+### Configurações do Projeto:
+
+#### Arquivos de configuração importantes:
+- `.prettierrc` - Formatação de código
+- `.editorconfig` - Padronização entre editores  
+- `.gitattributes` - Normalização Git (LF)
+- `jest.config.js` - Configuração de testes
+- `tsconfig.json` - Configuração TypeScript
 
 ## 🔧 Comandos Importantes
 
@@ -124,6 +237,7 @@ export function validateX(value: string, options: ValidatorOptions = {}): Valida
 ```bash
 npm run build           # Compila TypeScript
 npm run watch          # Desenvolvimento em tempo real
+npm run format         # Formata código com Prettier (OBRIGATÓRIO)
 npm run dev            # Build + testes
 ```
 
@@ -136,11 +250,24 @@ npm run test:coverage  # Verificar cobertura
 ## 🌟 Objetivos do Projeto
 
 - **Qualidade de código open source**
+- **Formatação consistente com Prettier**
+- **Padronização rigorosa entre desenvolvedores**
 - **Cobertura de testes > 80%**
 - **Padrões brasileiros específicos**
 - **Performance otimizada**
 - **Documentação completa**
 
+## ⚠️ Regras OBRIGATÓRIAS
+
+1. **SEMPRE** execute `npm run format` antes de commits
+2. **SEMPRE** execute `npm test` antes de commits  
+3. **NUNCA** altere as configurações do Prettier sem discussão
+4. **USE** apenas LF (Unix) como fim de linha
+5. **MANTENHA** indentação de 2 espaços consistente
+6. **RESPEITE** limite de 100 caracteres por linha
+
 ---
 
-**Lembre-se**: Este é um projeto **open source** brasileiro, mantenha a qualidade profissional em todas as contribuições! 🇧🇷
+**Lembre-se**: Este é um projeto **open source** brasileiro com padrões rígidos de qualidade e formatação. Mantenha a excelência profissional em todas as contribuições! 🇧🇷
+
+**Formatação é OBRIGATÓRIA**: `npm run format` antes de todo commit! 🎨
