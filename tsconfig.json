@@ -11,9 +11,5 @@
     "types": ["node"],
     "skipLibCheck": true
   },
-  "include": [
-    "nodes/**/*.ts",
-    "types.d.ts", 
-    "tests/setup.ts"  
-  ]
+  "include": ["nodes/**/*.ts", "types.d.ts", "tests/setup.ts"]
 }

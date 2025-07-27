@@ -14,7 +14,7 @@ npm install n8n-nodes-br-data-utils
 ## 📋 Funcionalidades
 
 - ✅ **CPF**: Validação com dígitos verificadores + higienização
-- ✅ **CNPJ**: Validação com dígitos verificadores + higienização  
+- ✅ **CNPJ**: Validação com dígitos verificadores + higienização
 - ✅ **Telefone**: Validação números fixos (10 dígitos) + higienização
 - ✅ **Celular**: Validação números celulares (11 dígitos) + higienização
 - ✅ **CEP**: Validação códigos postais (8 dígitos) + higienização
@@ -113,6 +113,7 @@ Os testes seguem as boas práticas:
 - **Casos de teste brasileiros** específicos
 
 Cada validador possui testes abrangentes cobrindo:
+
 - ✅ **Casos válidos**: Dados brasileiros corretos com diferentes formatações
 - ❌ **Casos inválidos**: Dados incorretos, caracteres inválidos, tamanhos errados
 - 🔄 **Edge cases**: Formatações mistas, espaços, valores nulos
@@ -130,6 +131,7 @@ Cada validador possui testes abrangentes cobrindo:
 ### Validação contínua
 
 O projeto utiliza:
+
 - **Pre-commit hooks** executam testes antes do commit
 - **GitHub Actions** para CI/CD automatizado
 - **Cobertura de testes** mínima de 80%

@@ -1,5 +1,10 @@
 import { describe, test, expect } from '@jest/globals';
-import { validateTelefone, validateCelular, formatTelefone, formatCelular } from '../../nodes/BrDataUtils/validators/telefone';
+import {
+  validateTelefone,
+  validateCelular,
+  formatTelefone,
+  formatCelular,
+} from '../../nodes/BrDataUtils/validators/telefone';
 
 describe('Telefone Validator - Dados Brasileiros', () => {
   describe('validateTelefone (Fixo)', () => {
@@ -9,11 +14,11 @@ describe('Telefone Validator - Dados Brasileiros', () => {
           '(11) 3456-7890', // São Paulo
           '(21) 2345-6789', // Rio de Janeiro
           '(31) 3234-5678', // Belo Horizonte
-          '1134567890',     // sem formatação
-          '+55 11 3456-7890' // com código do país
+          '1134567890', // sem formatação
+          '+55 11 3456-7890', // com código do país
         ];
 
-        telefonesValidos.forEach(telefone => {
+        telefonesValidos.forEach((telefone) => {
           const resultado = validateTelefone(telefone);
           expect(resultado.isValid).toBe(true);
           expect(resultado.error).toBeUndefined();
@@ -28,13 +33,9 @@ describe('Telefone Validator - Dados Brasileiros', () => {
       });
 
       test('deve aceitar diferentes formatações', () => {
-        const formatacoes = [
-          '11 3456-7890',
-          '(11)3456-7890',
-          '11-3456-7890'
-        ];
+        const formatacoes = ['11 3456-7890', '(11)3456-7890', '11-3456-7890'];
 
-        formatacoes.forEach(telefone => {
+        formatacoes.forEach((telefone) => {
           const resultado = validateTelefone(telefone);
           expect(typeof resultado.isValid).toBe('boolean');
         });
@@ -46,10 +47,10 @@ describe('Telefone Validator - Dados Brasileiros', () => {
         const dddsInvalidos = [
           '(10) 3456-7890', // DDD < 11
           '(00) 3456-7890', // DDD = 00
-          '(99) 3456-7890'  // DDD > 99 seria válido, mas testamos edge case
+          '(99) 3456-7890', // DDD > 99 seria válido, mas testamos edge case
         ];
 
-        dddsInvalidos.slice(0, 2).forEach(telefone => {
+        dddsInvalidos.slice(0, 2).forEach((telefone) => {
           const resultado = validateTelefone(telefone);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toContain('DDD inválido');
@@ -59,10 +60,10 @@ describe('Telefone Validator - Dados Brasileiros', () => {
       test('deve rejeitar primeiro dígito inválido (0 ou 1)', () => {
         const digitosInvalidos = [
           '(11) 0456-7890', // começa com 0
-          '(11) 1456-7890'  // começa com 1
+          '(11) 1456-7890', // começa com 1
         ];
 
-        digitosInvalidos.forEach(telefone => {
+        digitosInvalidos.forEach((telefone) => {
           const resultado = validateTelefone(telefone);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toContain('primeiro dígito');
@@ -71,13 +72,13 @@ describe('Telefone Validator - Dados Brasileiros', () => {
 
       test('deve rejeitar tamanho incorreto', () => {
         const tamanhoErrado = [
-          '(11) 3456-789',   // muito curto
+          '(11) 3456-789', // muito curto
           '(11) 3456-78901', // muito longo
-          '11345678',        // 8 dígitos
-          '113456789012'     // 12 dígitos
+          '11345678', // 8 dígitos
+          '113456789012', // 12 dígitos
         ];
 
-        tamanhoErrado.forEach(telefone => {
+        tamanhoErrado.forEach((telefone) => {
           const resultado = validateTelefone(telefone);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toContain('10 dígitos');
@@ -85,13 +86,9 @@ describe('Telefone Validator - Dados Brasileiros', () => {
       });
 
       test('deve rejeitar caracteres inválidos', () => {
-        const caracteresInvalidos = [
-          '(11) 3456-789a',
-          '(11) 3456-78@0',
-          'abc def ghij'
-        ];
+        const caracteresInvalidos = ['(11) 3456-789a', '(11) 3456-78@0', 'abc def ghij'];
 
-        caracteresInvalidos.forEach(telefone => {
+        caracteresInvalidos.forEach((telefone) => {
           const resultado = validateTelefone(telefone);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('Telefone contém caracteres inválidos');
@@ -106,11 +103,11 @@ describe('Telefone Validator - Dados Brasileiros', () => {
         const celularesValidos = [
           '(11) 99876-5432', // São Paulo
           '(21) 98765-4321', // Rio de Janeiro
-          '11998765432',     // sem formatação
-          '+55 11 99876-5432' // com código do país
+          '11998765432', // sem formatação
+          '+55 11 99876-5432', // com código do país
         ];
 
-        celularesValidos.forEach(celular => {
+        celularesValidos.forEach((celular) => {
           const resultado = validateCelular(celular);
           expect(resultado.isValid).toBe(true);
           expect(resultado.error).toBeUndefined();
@@ -129,10 +126,10 @@ describe('Telefone Validator - Dados Brasileiros', () => {
       test('deve rejeitar celular que não começa com 9', () => {
         const semNove = [
           '(11) 88876-5432', // começa com 8
-          '(11) 78765-4321'  // começa com 7
+          '(11) 78765-4321', // começa com 7
         ];
 
-        semNove.forEach(celular => {
+        semNove.forEach((celular) => {
           const resultado = validateCelular(celular);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toContain('começar com 9');
@@ -147,11 +144,11 @@ describe('Telefone Validator - Dados Brasileiros', () => {
 
       test('deve rejeitar tamanho incorreto', () => {
         const tamanhoErrado = [
-          '(11) 9987-5432',   // 10 dígitos
+          '(11) 9987-5432', // 10 dígitos
           '(11) 998765-4321', // 12 dígitos
         ];
 
-        tamanhoErrado.forEach(celular => {
+        tamanhoErrado.forEach((celular) => {
           const resultado = validateCelular(celular);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toContain('11 dígitos');

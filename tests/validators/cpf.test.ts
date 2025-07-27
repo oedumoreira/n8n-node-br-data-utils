@@ -10,10 +10,10 @@ describe('CPF Validator - Dados Brasileiros', () => {
           '123.456.789-09',
           '987.654.321-00',
           '11144477735', // sem formatação
-          '529.982.247-25'
+          '529.982.247-25',
         ];
 
-        cpfsValidos.forEach(cpf => {
+        cpfsValidos.forEach((cpf) => {
           const resultado = validateCpf(cpf);
           expect(resultado.isValid).toBe(true);
           expect(resultado.error).toBeUndefined();
@@ -44,14 +44,9 @@ describe('CPF Validator - Dados Brasileiros', () => {
       });
 
       test('deve rejeitar CPF com todos os dígitos iguais', () => {
-        const cpfsInvalidos = [
-          '111.111.111-11',
-          '222.222.222-22',
-          '00000000000',
-          '99999999999'
-        ];
+        const cpfsInvalidos = ['111.111.111-11', '222.222.222-22', '00000000000', '99999999999'];
 
-        cpfsInvalidos.forEach(cpf => {
+        cpfsInvalidos.forEach((cpf) => {
           const resultado = validateCpf(cpf);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CPF não pode ter todos os dígitos iguais');
@@ -63,10 +58,10 @@ describe('CPF Validator - Dados Brasileiros', () => {
           '123456789', // muito curto
           '123456789012', // muito longo
           '123.456.789-0', // 10 dígitos
-          '1234.567.890-12' // 12 dígitos
+          '1234.567.890-12', // 12 dígitos
         ];
 
-        tamanhoErrado.forEach(cpf => {
+        tamanhoErrado.forEach((cpf) => {
           const resultado = validateCpf(cpf);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CPF deve ter 11 dígitos');
@@ -78,10 +73,10 @@ describe('CPF Validator - Dados Brasileiros', () => {
           '123.456.789-0a',
           '123.456.78b-09',
           'abc.def.ghi-jk',
-          '123@456#789$09'
+          '123@456#789$09',
         ];
 
-        caracteresInvalidos.forEach(cpf => {
+        caracteresInvalidos.forEach((cpf) => {
           const resultado = validateCpf(cpf);
           expect(resultado.isValid).toBe(false);
           expect(resultado.error).toBe('CPF contém caracteres inválidos');
@@ -91,7 +86,7 @@ describe('CPF Validator - Dados Brasileiros', () => {
       test('deve rejeitar valores vazios ou inválidos', () => {
         const valoresInvalidos = ['', '   ', null as any, undefined as any];
 
-        valoresInvalidos.forEach(valor => {
+        valoresInvalidos.forEach((valor) => {
           const resultado = validateCpf(valor);
           expect(resultado.isValid).toBe(false);
         });
@@ -100,14 +95,9 @@ describe('CPF Validator - Dados Brasileiros', () => {
 
     describe('Casos extremos brasileiros', () => {
       test('deve lidar com formatações mistas típicas do Brasil', () => {
-        const formatacoesMistas = [
-          '123.456.789-09',
-          '123456789-09',
-          '123.45678909',
-          '12345678909'
-        ];
+        const formatacoesMistas = ['123.456.789-09', '123456789-09', '123.45678909', '12345678909'];
 
-        formatacoesMistas.forEach(cpf => {
+        formatacoesMistas.forEach((cpf) => {
           const resultado = validateCpf(cpf);
           expect(typeof resultado.isValid).toBe('boolean');
         });
